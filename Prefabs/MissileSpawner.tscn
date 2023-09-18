@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs8ar6boi80hc"]
+
+[ext_resource type="Script" path="res://Scripts/MissileSpawner.gd" id="1_u0850"]
+
+[node name="MissileSpawner" type="Node"]
+script = ExtResource("1_u0850")

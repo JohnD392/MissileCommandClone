@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://cv7oeijxe5x6x"]
+
+[ext_resource type="Script" path="res://Scripts/Missile.gd" id="1_7334a"]
+[ext_resource type="Texture2D" uid="uid://blcre6m44r802" path="res://Missile.png" id="2_m4ctm"]
+[ext_resource type="Script" path="res://addons/trail_2d/trail_2d.gd" id="4_u4ki7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wta0n"]
+size = Vector2(22, 35)
+
+[sub_resource type="Curve" id="Curve_4ypuk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Missile" type="Area2D"]
+script = ExtResource("1_7334a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_wta0n")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_m4ctm")
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 2.0
+width_curve = SubResource("Curve_4ypuk")
+script = ExtResource("4_u4ki7")
+length = 100

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://du243mqqmkdp7"]
+
+[ext_resource type="PackedScene" uid="uid://baa3mm4cqcv1n" path="res://Prefabs/IntroScreen.tscn" id="1_55anu"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="IntroScreen" parent="." instance=ExtResource("1_55anu")]
+custom_minimum_size = Vector2(480, 270)
+offset_right = 480.0
+offset_bottom = 270.0

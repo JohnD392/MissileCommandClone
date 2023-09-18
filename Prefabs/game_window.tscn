@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk6mcgkvrfu0n"]
+
+[ext_resource type="PackedScene" uid="uid://beoyutafrni3k" path="res://Prefabs/Base.tscn" id="1_0ju0y"]
+[ext_resource type="Script" path="res://Scripts/EventListener.gd" id="5_hdvhb"]
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="6_nua3g"]
+[ext_resource type="Script" path="res://Scripts/MissileSpawner.gd" id="7_da7n8"]
+
+[node name="GameWindow" type="Node2D"]
+
+[node name="Base" parent="." instance=ExtResource("1_0ju0y")]
+position = Vector2(0, 210)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="EventListener" type="Node" parent="."]
+script = ExtResource("5_hdvhb")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("6_nua3g")
+
+[node name="MissileSpawner" type="Node2D" parent="."]
+script = ExtResource("7_da7n8")
+
+[connection signal="waveStart" from="GameManager" to="MissileSpawner" method="_on_game_manager_wave_start"]
+[connection signal="missileSpawningComplete" from="MissileSpawner" to="EventListener" method="_on_missile_spawner_missile_spawning_complete"]
+[connection signal="missileSpawningComplete" from="MissileSpawner" to="GameManager" method="_on_missile_spawner_missile_spawning_complete"]
+[connection signal="missileSpawningStart" from="MissileSpawner" to="EventListener" method="_on_missile_spawner_missile_spawning_start"]

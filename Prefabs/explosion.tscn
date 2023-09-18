@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcyt6iqhlasjd"]
+
+[ext_resource type="Script" path="res://Scripts/Explosion.gd" id="1_h3jkm"]
+[ext_resource type="Texture2D" uid="uid://vdka0vsmkf1x" path="res://Explosion.png" id="2_foa05"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tfa03"]
+
+[node name="Explosion" type="Area2D"]
+script = ExtResource("1_h3jkm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tfa03")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+scale = Vector2(0.255, 0.255)
+texture = ExtResource("2_foa05")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

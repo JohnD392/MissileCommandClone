@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1avcb5n0d02u"]
+
+[ext_resource type="Texture2D" uid="uid://blcre6m44r802" path="res://Missile.png" id="1_j40lf"]
+[ext_resource type="Script" path="res://addons/trail_2d/trail_2d.gd" id="3_5ejkd"]
+
+[sub_resource type="GDScript" id="GDScript_nmxkk"]
+script/source = "extends Node2D
+
+class_name Sam
+
+var targetPosition: Vector2
+var targetExplosionDistance: float = 10
+
+var explosionPrefab = preload(\"res://Prefabs/explosion.tscn\")
+
+var direction: Vector2 = Vector2.ZERO
+var speed = 120
+
+func set_target(target_position: Vector2):
+	targetPosition = target_position
+
+func set_direction(dir: Vector2):
+	direction = dir.normalized()
+
+func move(delta):
+	position += (direction * speed * delta)
+
+func _physics_process(delta):
+	move(delta)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if((targetPosition - global_position).length() < targetExplosionDistance):
+		create_explosion(targetPosition)
+		hide()
+		call_deferred(\"queue_free\")
+
+func create_explosion(target_position: Vector2):
+	var explosion = explosionPrefab.instantiate()
+	get_tree().root.add_child(explosion)
+	explosion.global_position = target_position
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ijp5"]
+size = Vector2(123, 124)
+
+[sub_resource type="Curve" id="Curve_emb8w"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="SAM" type="Area2D"]
+script = SubResource("GDScript_nmxkk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.25, 0)
+scale = Vector2(0.28, 0.28)
+shape = SubResource("RectangleShape2D_3ijp5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_j40lf")
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 2.0
+width_curve = SubResource("Curve_emb8w")
+script = ExtResource("3_5ejkd")
+length = 100

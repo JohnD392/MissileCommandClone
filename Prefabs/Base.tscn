@@ -1,0 +1,160 @@
+[gd_scene load_steps=8 format=3 uid="uid://beoyutafrni3k"]
+
+[ext_resource type="Texture2D" uid="uid://4eyemqu4eyjq" path="res://MissileCommandBaseFile.png" id="1_6cdle"]
+[ext_resource type="Script" path="res://Scripts/City.gd" id="1_mdmah"]
+[ext_resource type="Script" path="res://Scripts/SiloParent.gd" id="1_s0x16"]
+[ext_resource type="Script" path="res://Scripts/Silo.gd" id="2_3c07v"]
+[ext_resource type="Texture2D" uid="uid://due0dx2mflp4m" path="res://MissileCommandCity.png" id="2_t32cc"]
+[ext_resource type="Script" path="res://Scripts/AmmoCounter.gd" id="3_48ph8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vid1q"]
+
+[node name="Base" type="Node2D"]
+
+[node name="Cities" type="Node2D" parent="."]
+
+[node name="City" type="Area2D" parent="Cities"]
+position = Vector2(-248, 1)
+script = ExtResource("1_mdmah")
+
+[node name="Collider" type="CollisionShape2D" parent="Cities/City"]
+position = Vector2(0, -2)
+scale = Vector2(2.5, 2.5)
+shape = SubResource("RectangleShape2D_vid1q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Cities/City"]
+texture_filter = 1
+position = Vector2(-7.62939e-06, -2)
+scale = Vector2(3.125, 3.125)
+texture = ExtResource("2_t32cc")
+
+[node name="City2" type="Area2D" parent="Cities"]
+position = Vector2(-24.04, 0)
+script = ExtResource("1_mdmah")
+
+[node name="Collider" type="CollisionShape2D" parent="Cities/City2"]
+position = Vector2(-165, -0.915)
+scale = Vector2(2.5, 2.5)
+shape = SubResource("RectangleShape2D_vid1q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Cities/City2"]
+texture_filter = 1
+position = Vector2(-165.225, -1)
+scale = Vector2(3.125, 3.125)
+texture = ExtResource("2_t32cc")
+
+[node name="City3" type="Area2D" parent="Cities"]
+position = Vector2(37.79, 0)
+script = ExtResource("1_mdmah")
+
+[node name="Collider" type="CollisionShape2D" parent="Cities/City3"]
+position = Vector2(-165, 0)
+scale = Vector2(2.5, 2.5)
+shape = SubResource("RectangleShape2D_vid1q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Cities/City3"]
+texture_filter = 1
+position = Vector2(-165.225, -1)
+scale = Vector2(3.125, 3.125)
+texture = ExtResource("2_t32cc")
+
+[node name="City4" type="Area2D" parent="Cities"]
+position = Vector2(283.255, 0)
+script = ExtResource("1_mdmah")
+
+[node name="Collider" type="CollisionShape2D" parent="Cities/City4"]
+position = Vector2(-165, 0)
+scale = Vector2(2.5, 2.5)
+shape = SubResource("RectangleShape2D_vid1q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Cities/City4"]
+texture_filter = 1
+position = Vector2(-165.225, -1)
+scale = Vector2(3.125, 3.125)
+texture = ExtResource("2_t32cc")
+
+[node name="City5" type="Area2D" parent="Cities"]
+position = Vector2(343.215, 0)
+script = ExtResource("1_mdmah")
+
+[node name="Collider" type="CollisionShape2D" parent="Cities/City5"]
+position = Vector2(-165, 0)
+scale = Vector2(2.5, 2.5)
+shape = SubResource("RectangleShape2D_vid1q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Cities/City5"]
+texture_filter = 1
+position = Vector2(-165.225, -1)
+scale = Vector2(3.125, 3.125)
+texture = ExtResource("2_t32cc")
+
+[node name="City6" type="Area2D" parent="Cities"]
+position = Vector2(401.355, 0)
+script = ExtResource("1_mdmah")
+
+[node name="Collider" type="CollisionShape2D" parent="Cities/City6"]
+position = Vector2(-165, 0)
+scale = Vector2(2.5, 2.5)
+shape = SubResource("RectangleShape2D_vid1q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Cities/City6"]
+texture_filter = 1
+position = Vector2(-165.225, -1)
+scale = Vector2(3.125, 3.125)
+texture = ExtResource("2_t32cc")
+
+[node name="SiloParent" type="Node2D" parent="."]
+script = ExtResource("1_s0x16")
+
+[node name="LeftSilo" type="Node2D" parent="SiloParent"]
+position = Vector2(-363.155, 0)
+script = ExtResource("2_3c07v")
+
+[node name="AmmoCounter" type="RichTextLabel" parent="SiloParent/LeftSilo"]
+offset_left = -19.845
+offset_top = 29.0
+offset_right = 20.155
+offset_bottom = 69.0
+bbcode_enabled = true
+text = "[center] 12"
+script = ExtResource("3_48ph8")
+
+[node name="MiddleSilo" type="Node2D" parent="SiloParent"]
+script = ExtResource("2_3c07v")
+
+[node name="AmmoCounter" type="RichTextLabel" parent="SiloParent/MiddleSilo"]
+offset_left = -19.0
+offset_top = 30.0
+offset_right = 21.0
+offset_bottom = 70.0
+bbcode_enabled = true
+text = "[center] 12"
+script = ExtResource("3_48ph8")
+
+[node name="RightSilo" type="Node2D" parent="SiloParent"]
+position = Vector2(368.59, 0)
+script = ExtResource("2_3c07v")
+
+[node name="AmmoCounter" type="RichTextLabel" parent="SiloParent/RightSilo"]
+offset_left = -19.59
+offset_top = 29.0
+offset_right = 20.41
+offset_bottom = 69.0
+bbcode_enabled = true
+text = "[center] 12"
+script = ExtResource("3_48ph8")
+
+[node name="MissileCommandBaseFile2" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("1_6cdle")
+
+[connection signal="area_entered" from="Cities/City" to="Cities/City" method="_on_area_entered"]
+[connection signal="area_entered" from="Cities/City2" to="Cities/City2" method="_on_area_entered"]
+[connection signal="area_entered" from="Cities/City3" to="Cities/City3" method="_on_area_entered"]
+[connection signal="area_entered" from="Cities/City4" to="Cities/City4" method="_on_area_entered"]
+[connection signal="area_entered" from="Cities/City5" to="Cities/City5" method="_on_area_entered"]
+[connection signal="area_entered" from="Cities/City6" to="Cities/City6" method="_on_area_entered"]
+[connection signal="ammo_amount_changed" from="SiloParent/LeftSilo" to="SiloParent/LeftSilo/AmmoCounter" method="_on_left_silo_ammo_amount_changed"]
+[connection signal="ammo_amount_changed" from="SiloParent/MiddleSilo" to="SiloParent/MiddleSilo/AmmoCounter" method="_on_middle_silo_ammo_amount_changed"]
+[connection signal="ammo_amount_changed" from="SiloParent/RightSilo" to="SiloParent/RightSilo/AmmoCounter" method="_on_right_silo_ammo_amount_changed"]
